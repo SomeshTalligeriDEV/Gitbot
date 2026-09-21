@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/gitbot-hq/GitBot/main/assets/logo.png" alt="gitbot" width="320" />
-
 # gitbot Library
 
 **Ready-made bots for [gitbot](https://github.com/gitbot-hq/GitBot). Import one, point it at a folder, put it to work.**
