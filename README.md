@@ -2,11 +2,11 @@
 
 # gitbot Library
 
-**Ready-made bots for [gitbot](https://github.com/gitbot-hq/GitBot). Import one, point it at a folder, put it to work.**
+**Ready-made bots for [gitbot](https://github.com/gitbot-hq/GitBot). Install one, point it at a folder, put it to work.**
 
 [![npm version](https://img.shields.io/npm/v/@gitbot-hq/gitbot?label=%40gitbot-hq%2Fgitbot)](https://www.npmjs.com/package/@gitbot-hq/gitbot)
 
-[Get gitbot](#get-gitbot) · [What is a bot?](#what-is-a-bot) · [Using a bot from the library](#using-a-bot-from-the-library) · [Suggest a bot](#suggest-a-bot)
+[Get gitbot](#get-gitbot) · [What is a bot?](#what-is-a-bot) · [Using a bot](#using-a-bot-from-the-library) · [Publish a bot](#publish-your-own)
 
 </div>
 
@@ -15,7 +15,7 @@
 
 ## What is this?
 
-[gitbot](https://github.com/gitbot-hq/GitBot) lets you turn an AI coding agent — Claude Code, Codex or OpenCode — into reusable **bots** that run on your own machine. This library is the home for bots built with it: bots you can import instead of writing from scratch, and read to learn how a good bot is put together.
+[gitbot](https://github.com/gitbot-hq/GitBot) lets you turn an AI coding agent — Claude Code, Codex or OpenCode — into reusable **bots** that run on your own machine. This library is the home for bots built with it: bots you can install instead of writing from scratch, and read to learn how a good bot is put together.
 
 ## Get gitbot
 
@@ -41,24 +41,28 @@ A bot is an agent you define once and reuse:
 - **Tool lists** — optionally, the only tools it may use.
 - **Setup steps** — optionally, what it needs on a machine (*"ffmpeg must be on PATH"*), which it checks or prepares once.
 
-gitbot packs all of that into a **share code** — a single line starting with `gitbot:v1:` — that recreates the bot on another machine.
+Every bot in this library is one folder under `bots/` holding exactly that, plus the words that describe it. You can read any of them in full before you install — the instructions are plain Markdown, not an encoded blob.
 
 ## Using a bot from the library
 
-Once bots are published here, using one takes three steps:
-
-1. Copy the bot's share code.
-2. In the gitbot hub, click **Import a bot** and paste it.
-3. Open a thread in the folder you want it to work in, and say hi.
-
-Each bot will be published with its **instructions and setup steps in plain text** next to its share code, so you can read exactly what it does before you import it.
+1. Open the gitbot hub and go to **Discover**.
+2. Find a bot and open it. Read what it does, what it can help with, and the permission mode it runs in.
+3. Click **Install**. The bot is added to your machine, with approvals on by default.
+4. Open a thread in the folder you want it to work in, and say hi. The bot starts its job on your first message, whatever that message says.
 
 > [!WARNING]
-> **Read a bot before you import it.** A share code is a set of instructions for an AI agent that runs on your machine with your file access. gitbot's import dialog shows only the bot's name and description, and a bot that has setup steps starts its setup run as soon as it is imported, in the permission mode the code carries. Only import codes you have read or whose author you trust — the same care you would give a script from the internet. See [gitbot's security notes](https://github.com/gitbot-hq/GitBot#security).
+> **Read a bot before you install it.** A bot is a set of instructions for an AI agent that runs on your machine with your file access. Its detail page shows the instructions it will run under and the permission mode it carries, and a bot with setup steps begins its one-time setup run as soon as you install it. Install bots you have read or whose author you trust — the same care you would give a script from the internet. See [gitbot's security notes](https://github.com/gitbot-hq/GitBot#security).
 
-## Suggest a bot
+## Publish your own
 
-Have a bot that earns its keep, or an idea for one? [Open an issue](https://github.com/gitbot-hq/Library/issues) and tell us what it does. Contribution guidelines will be added here together with the first bots.
+Built a bot that earns its keep? Add it here with a pull request.
+
+The quickest way is to let an agent do it: paste [`docs/publish-prompt.md`](docs/publish-prompt.md) into Claude Code, Codex or OpenCode. It interviews you about the bot, writes the folder, checks it and opens the pull request, pausing for your approval before it writes anything and before it submits.
+
+- **[Contributing guide](CONTRIBUTING.md)** — the rules, the checklist, and what review looks for.
+- **[Bot folder specification](docs/bot-schema.md)** — every field, its limits, and why it is shaped that way.
+
+Have an idea but not the time to build it? [Open an issue](https://github.com/gitbot-hq/Library/issues) and describe what the bot should do.
 
 ## Links
 
