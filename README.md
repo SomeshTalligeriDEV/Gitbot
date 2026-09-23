@@ -57,7 +57,7 @@ Every bot in this library is one folder under `bots/` holding exactly that, plus
 
 Built a bot that earns its keep? Add it here with a pull request.
 
-The quickest way is to let an agent do it: paste [`docs/publish-prompt.md`](docs/publish-prompt.md) into Claude Code, Codex or OpenCode. It interviews you about the bot, writes the folder, checks it and opens the pull request, pausing for your approval before it writes anything and before it submits.
+The quickest way is to let an agent do it: paste [`docs/publish-prompt.md`](docs/publish-prompt.md) into Claude Code, Codex or OpenCode. It starts by listing the bots you have already built on this machine and offering to publish one of them as it stands; otherwise it interviews you about a new one. Either way it writes the folder, checks it and opens the pull request, pausing for your approval before it writes anything and before it submits.
 
 - **[Contributing guide](CONTRIBUTING.md)** — the rules, the checklist, and what review looks for.
 - **[Bot folder specification](docs/bot-schema.md)** — every field, its limits, and why it is shaped that way.

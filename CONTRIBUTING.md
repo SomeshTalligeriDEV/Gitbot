@@ -8,9 +8,11 @@ You do not have to assemble that folder by hand.
 ## The short version
 
 Open your coding agent in any folder, paste in
-**[`docs/publish-prompt.md`](docs/publish-prompt.md)**, and answer its questions. It interviews you
-about the bot, writes the folder, checks it, shows you the diff and opens the pull request. It will
-stop and ask before it writes anything and again before it opens the PR.
+**[`docs/publish-prompt.md`](docs/publish-prompt.md)**, and answer its questions. If you have already
+built bots with gitbot, it finds them, lists them and offers to publish one — as written, without
+rewriting it. If not, it interviews you about a new one. Then it writes the folder, checks it, shows
+you the diff and opens the pull request. It will stop and ask before it writes anything and again
+before it opens the PR.
 
 If you would rather do it by hand, [`docs/bot-schema.md`](docs/bot-schema.md) is the full
 specification.

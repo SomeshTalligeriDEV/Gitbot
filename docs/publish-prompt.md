@@ -9,10 +9,11 @@ discover page, where other people can install it onto their own machines with on
 
 The library repo is **`gitbot-hq/Library`** (https://github.com/gitbot-hq/Library).
 
-Your task in this conversation is to work out with me what my bot should be, write it into a new
-folder in a clone of that repo, and open a pull request. Work through the steps in order. Do not
-write anything to disk until I have seen the definition and approved it, and do not open the pull
-request until I have seen the diff.
+Your task in this conversation is to work out with me which bot to publish — one I have already built
+on this machine, or a new one we design together — write it into a new folder in a clone of that
+repo, and open a pull request. Work through the steps in order. Do not write anything to disk until
+I have seen the definition and approved it, and do not open the pull request until I have seen the
+diff.
 
 **Because this bot is going to run on other people's computers, hold it to a higher standard than
 something I would keep to myself. Say so when it is not there yet.**
@@ -30,10 +31,65 @@ something I would keep to myself. Say so when it is not there yet.**
 - Never add images, logos or binary files. The artwork is generated from two fields.
 - Nothing from my machine goes in: no absolute paths, no home directory, no usernames, no repo names
   of mine, no tokens or keys. Check the finished files for this explicitly before committing.
+- **If we are publishing a bot I already have, publish it as it is.** Do not rewrite, tighten,
+  reword, reformat or "improve" its instructions or setup steps on the way through. If you think
+  something should change, say so and let me decide; change it only if I ask you to.
+- Never write to gitbot's own data file. Reading it to find my bots is fine; editing it is not.
 
 ---
 
-## 1. Interview me
+## 1. See what I already have
+
+Before asking me anything, look for bots I have already built on this machine. gitbot keeps them in
+a single JSON file — an array of bot objects:
+
+- `$GITBOT_DATA_DIR/bots.json` if that variable is set, otherwise
+- `$GRASS_DATA_DIR/bots.json` if that one is, otherwise
+- `~/.gitbot/bots.json`, or `~/.grass/bots.json` if `~/.gitbot` does not exist (older installs).
+
+That last one is a dot-folder in my home directory on every operating system — gitbot does not use
+`~/Library/Application Support` on macOS or `%APPDATA%` on Windows, so there is no platform-specific
+path to guess. On Windows it is `%USERPROFILE%\.gitbot\bots.json`. Resolve the home directory
+yourself rather than handing a literal `~` to something that will not expand it.
+
+Those are where it lives today, not a guarantee. If none of them is there, spend one quick look
+finding it by name before concluding I have nothing: a `bots.json` somewhere under my home
+directory, most likely in a dot-folder alongside a `threads.json`. Confirm it is the right file by
+its contents rather than its name — a JSON array whose objects carry `id`, `name`, `instructions`
+and `permissionMode` — since plenty of projects have a `bots.json` that means something else. Search
+my home directory, not the whole disk, and give up quickly rather than grinding; if you find two
+candidates, show me both and ask. Do not go looking inside the gitbot source tree if I happen to
+have it checked out: fixtures and test data are not my bots.
+
+If the file is missing or the array is empty, say so in one line and go to step 2 — I have no bots
+yet and we are designing one. Do not create the file.
+
+If there are bots, show me the list: for each one, the emoji, the name, the description, and its
+permission mode. Keep it to a line each; do not print the instructions yet. Then ask whether I want
+to publish one of these, or build something new.
+
+If I pick one:
+
+- Read its full record and show me the instructions in full, unedited, before going further.
+- `name`, `description`, `emoji`, `instructions`, `agent`, `permissionMode`, `model`,
+  `allowedTools` and `disallowedTools` carry straight over to the published bot. `setupInstructions`
+  becomes `setup.md`. Skip step 3 and step 6 entirely — they are already written.
+- `id`, `createdAt`, `updatedAt`, `repoPath`, `setupStatus` and `setupThreadId` are machine-local.
+  They never go in the pull request.
+- The listing fields do not exist locally, so step 4 still applies: `slug`, `category`, `about`,
+  `features`, `examplePrompt`, `mascot` and `author` all have to be written. From step 2, ask only
+  the "who else is it for" question — whether this bot is publishable at all, or only works in my
+  checkout.
+- If the instructions contain something that cannot be published — an absolute path, my username, a
+  private repo name, anything resembling a credential — stop and show me the exact line. Ask whether
+  to change it or abandon publishing this one. Never edit it silently.
+
+If I would rather build something new, or the bot I picked turns out to be too personal to publish,
+carry on with step 2 as normal.
+
+---
+
+## 2. Interview me
 
 I probably have a rough idea, not a specification. Draw it out. Ask about two or three things at a
 time, not everything at once. Where you can reasonably infer an answer, propose it and let me correct
@@ -62,7 +118,7 @@ flag bugs and missing tests, never edit files" is.
 
 ---
 
-## 2. Write the standing job
+## 3. Write the standing job
 
 This text becomes `instructions.md`, and it is the substance of what I am publishing. gitbot wraps
 it in a frame that says, in effect: *you are this bot, this is your one job, begin it on the user's
@@ -89,7 +145,7 @@ project, and who will not get to ask a follow-up before starting.
 
 ---
 
-## 3. Write the listing
+## 4. Write the listing
 
 The discover page shows a card, and a detail panel when the card is clicked. Every field below is
 required — the panel has no graceful degradation, so a missing field is a failed pull request.
@@ -128,7 +184,7 @@ implementation. Concrete beats clever. No marketing voice, no exclamation marks.
 
 ---
 
-## 4. Choose the settings
+## 5. Choose the settings
 
 **`agent`** — `claude-code`, `opencode` or `codex`. Default to `claude-code`. The differences that
 matter: `codex` supports **no tool allow/deny lists and no per-call approval** (it sandboxes
@@ -153,7 +209,7 @@ leave it unset otherwise.
 
 ---
 
-## 5. Decide whether there is any setup
+## 6. Decide whether there is any setup
 
 A bot can declare what a machine needs before it can work. If it does, gitbot opens a one-time setup
 thread the first time the bot is installed, and **the bot refuses all work until that run reports
@@ -176,7 +232,7 @@ If it is needed, write steps that can actually be checked and finished:
 
 ---
 
-## 6. Show me everything before writing anything
+## 7. Show me everything before writing anything
 
 Print, as prose rather than JSON:
 
@@ -189,9 +245,13 @@ Print, as prose rather than JSON:
 Then ask whether to write it. Change what I ask, show it again, and only continue once I have said
 yes.
 
+If this came from a bot I already had, the standing job and the setup steps are shown here to be
+confirmed, not edited. Print them exactly as they are stored. If you think they need work, raise it
+as a separate question after printing them, and wait for me to say yes before touching a word.
+
 ---
 
-## 7. Get the repository
+## 8. Get the repository
 
 Check what is already here before cloning anything — I may have the library checked out already. If
 I do, use it; make sure it is clean and up to date with upstream first, and stop and ask if it has
@@ -215,14 +275,14 @@ git -C <repo> checkout -b add-<slug> upstream/main
 
 ---
 
-## 8. Write the folder
+## 9. Write the folder
 
 Create `bots/<slug>/` and write exactly these files:
 
 ```
 bots/<slug>/bot.json
 bots/<slug>/instructions.md
-bots/<slug>/setup.md        ← only if step 5 concluded there is setup
+bots/<slug>/setup.md        ← only if step 6 concluded there is setup
 ```
 
 `bot.json` — field order as below, two-space indent, trailing newline, UTF-8:
@@ -260,7 +320,7 @@ with anything above; the repo is the authority and this prompt may have aged.
 
 ---
 
-## 9. Validate before you commit
+## 10. Validate before you commit
 
 Run the library's own validator, whatever it is called — check `package.json` scripts and the
 workflow files under `.github/workflows/` to find it. Typically:
@@ -274,7 +334,7 @@ run it from. That is expected, not an error — do not install anything, do not 
 do not scaffold tooling of your own. Fall back to checking by hand.
 
 Checking by hand: the JSON parses, `slug` matches the folder name, `features`
-has exactly three entries, every enum value is spelled exactly as listed in step 3, no other bot has
+has exactly three entries, every enum value is spelled exactly as listed in step 4, no other bot has
 this `name` or `slug`, and `instructions.md` is under 600 words.
 
 Then read the final `git diff` yourself, looking for the things a schema cannot catch: an absolute
@@ -283,9 +343,13 @@ the instructions do not actually do. Fix what you find and re-check.
 
 Fix any failure properly. Do not disable a check, skip a hook, or work around the validator.
 
+One exception to "fix what you find": if the failure is in the text of a bot I already had — it runs
+long, or it names something of mine — bring it to me with the offending lines quoted and let me
+decide. Everything you wrote yourself, fix yourself.
+
 ---
 
-## 10. Show me the diff, then open the pull request
+## 11. Show me the diff, then open the pull request
 
 Show me `git status` and the full diff, and confirm it touches only files inside `bots/<slug>/`. Ask
 before continuing.
@@ -306,7 +370,7 @@ right one, whether it has setup steps, and how you tested it if you did. Do not 
 
 ---
 
-## 11. Report
+## 12. Report
 
 Tell me, in a few lines: the pull request URL; the bot's name and one line on what it does; its
 permission mode and what that allows; whether it has setup steps; and what happens next — a
