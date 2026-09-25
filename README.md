@@ -1,3 +1,8 @@
+| **GitBot Library** | [Overview](#gitbot-library) · [Use](#use-the-library) · [Publish](#publish-a-bot) · [Bot format](#what-a-published-bot-contains) · [Safety](#before-you-install) |
+| :--- | ---: |
+
+<br><br><br>
+
 # GitBot Library
 
 [![GitBot on npm](https://img.shields.io/npm/v/%40gitbot-hq%2Fgitbot?style=flat-square&label=gitbot)](https://www.npmjs.com/package/@gitbot-hq/gitbot)
@@ -5,8 +10,6 @@
 [![Pull requests welcome](https://img.shields.io/github/issues-pr/gitbot-hq/Library?style=flat-square&label=pull%20requests)](https://github.com/gitbot-hq/Library/pulls)
 
 **Ready-made bots for [GitBot](https://github.com/gitbot-hq/GitBot). Read one, install it, and put it to work in your own folders.**
-
-[Use the Library](#use-the-library) · [Publish a bot](#publish-a-bot) · [Bot format](#what-a-published-bot-contains) · [Safety](#before-you-install)
 
 GitBot turns Claude Code, Codex, or OpenCode into reusable bots that run on your machine. This repository is the public catalog behind GitBot's **Marketplace**. Every listing includes the bot's instructions, settings, and optional setup steps in plain files you can inspect before installing it.
 
