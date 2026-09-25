@@ -6,20 +6,9 @@
 
 **Ready-made bots for [GitBot](https://github.com/gitbot-hq/GitBot). Read one, install it, and put it to work in your own folders.**
 
-[Browse bots](#browse-bots) · [Use the Library](#use-the-library) · [Publish a bot](#publish-a-bot) · [Bot format](#what-a-published-bot-contains) · [Safety](#before-you-install)
+[Use the Library](#use-the-library) · [Publish a bot](#publish-a-bot) · [Bot format](#what-a-published-bot-contains) · [Safety](#before-you-install)
 
 GitBot turns Claude Code, Codex, or OpenCode into reusable bots that run on your machine. This repository is the public catalog behind GitBot's **Discover** page. Every listing includes the bot's instructions, settings, and optional setup steps in plain files you can inspect before installing it.
-
-<br><br><br>
-
-## Browse bots
-
-| Bot | What it does | Agent | Permission mode |
-| --- | --- | --- | --- |
-| [🤖 Lumie](bots/lumie) | Tracks Luma registrations, recommends growth actions, and drafts outreach. | Claude Code | Auto-approve |
-| [😂 Granola Meme Deck](bots/granola-meme-deck) | Turns recent Granola meeting notes into a local meme deck. | Claude Code | Ask before tools |
-
-Open a bot's folder to read its complete listing, standing instructions, and setup requirements.
 
 <br><br><br>
 
