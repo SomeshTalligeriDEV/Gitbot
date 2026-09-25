@@ -9,6 +9,12 @@
 [![GitHub stars](https://img.shields.io/github/stars/gitbot-hq/Library?style=flat-square&logo=github)](https://github.com/gitbot-hq/Library/stargazers)
 [![Pull requests welcome](https://img.shields.io/github/issues-pr/gitbot-hq/Library?style=flat-square&label=pull%20requests)](https://github.com/gitbot-hq/Library/pulls)
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="library-cover-dark.webp">
+  <source media="(prefers-color-scheme: light)" srcset="library-cover-light.webp">
+  <img alt="GitBot Library" src="library-cover-light.webp">
+</picture>
+
 **Ready-made bots for [GitBot](https://github.com/gitbot-hq/GitBot). Read one, install it, and put it to work in your own folders.**
 
 GitBot turns Claude Code, Codex, or OpenCode into reusable bots that run on your machine. This repository is the public catalog behind GitBot's **Marketplace**. Every listing includes the bot's instructions, settings, and optional setup steps in plain files you can inspect before installing it.
