@@ -1,4 +1,4 @@
-| **GitBot Library** | [Overview](#gitbot-library) · [Use](#use-the-library) · [Publish](#publish-a-bot) · [Bot format](#what-a-published-bot-contains) · [Safety](#before-you-install) |
+| [![GitBot](gitbot-logo.svg)](#gitbot-library) | [Overview](#gitbot-library) · [Use](#use-the-library) · [Publish](#publish-a-bot) · [Bot format](#what-a-published-bot-contains) · [Safety](#before-you-install) |
 | :--- | ---: |
 
 <br><br><br>
