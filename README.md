@@ -8,7 +8,7 @@
 
 [Use the Library](#use-the-library) · [Publish a bot](#publish-a-bot) · [Bot format](#what-a-published-bot-contains) · [Safety](#before-you-install)
 
-GitBot turns Claude Code, Codex, or OpenCode into reusable bots that run on your machine. This repository is the public catalog behind GitBot's **Discover** page. Every listing includes the bot's instructions, settings, and optional setup steps in plain files you can inspect before installing it.
+GitBot turns Claude Code, Codex, or OpenCode into reusable bots that run on your machine. This repository is the public catalog behind GitBot's **Marketplace**. Every listing includes the bot's instructions, settings, and optional setup steps in plain files you can inspect before installing it.
 
 <br><br><br>
 
@@ -23,7 +23,7 @@ gitbot start
 
 Then:
 
-1. Open GitBot and go to **Discover**.
+1. Open GitBot and go to **Marketplace**.
 2. Choose a bot and review what it does, its instructions, setup steps, agent, and permissions.
 3. Select **Install** to add it to your machine.
 4. Start a thread in the folder where you want it to work.
